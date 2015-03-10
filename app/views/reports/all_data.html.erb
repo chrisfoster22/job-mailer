@@ -1,21 +1,8 @@
-<h1>Hits for <%= @assembly.name %></h1>
-<p>Number of hits: <%= @hits.length %></p>
+<h1>Enter your email address</h1>
+<p>and you'll get an invitation to this app.</p>
 
-<table>
-  <thead>
-    <tr>
-      <th>Matching Gene Name</th>
-      <th>Matching DNA</th>
-      <th>Percent Similarity</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @hits.each do |h| %>
-      <tr>
-        <td><%= h.match_gene_name %></td>
-        <td><%= h.match_gene_dna.first(100) %></td>
-        <td><%= h.percent_similarity %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<%= form_tag reports_send_mail_path do %>
+  <p>Address: <%= email_field_tag :address %></p>
+  <p>Name of Report: <%= text_field_tag :name %>
+  <%= submit_tag %>
+<% end %>
